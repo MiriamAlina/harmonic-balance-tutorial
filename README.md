@@ -17,4 +17,4 @@ scipy 1.16
 To install the required packages:
 
 ```bash
-pip install "pdf2image==1.17" "ipython==9.4" "numpy==2.1" "matplotlib==3.10" "scipy==1.16"
+pip install -r requirements.txt
