@@ -1,0 +1,60 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc,patterns,decorations.pathmorphing,decorations.markings}
+\begin{document}
+
+\definecolor{CPSred}{HTML}{E63946}
+
+\begin{tikzpicture}[every node/.style={draw,outer sep=0pt,thick}]
+\tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6}]
+\tikzstyle{nlspring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6,markings,
+    mark=at position 0.5 with 
+    {
+      \draw[->,thick] (0,-0.25) -- (0.6,0.25);
+    }
+  }
+]
+\tikzstyle{nonlinear spring}=[
+  spring,
+  postaction={
+    decorate,
+    decoration={
+      markings,
+      mark=at position 0.5 with {
+        \draw[->,thick] (-.4,0.2) -- (0.45,-0.1);
+      }
+    }
+  }
+]
+\tikzstyle{damper}=[thick,decoration={markings,  
+  mark connection node=dmp,
+  mark=at position 0.5 with 
+  {
+    \node (dmp) [thick,inner sep=0pt,transform shape,rotate=-90,minimum width=15pt,minimum height=3pt,draw=none] {};
+    \draw [thick] ($(dmp.south west)+(-3pt,0)$) -- ($(dmp.north west)+(0,0)$) -- ($(dmp.north east)+(0,0)$) -- ($(dmp.south east)+(-3pt,0)$);
+    \draw [thick] ($(dmp.south)+(0,-4pt)$) -- ($(dmp.south)+(0,4pt)$);
+  }
+}, decorate]
+\tikzstyle{ground}=[fill,pattern=north east lines,draw=none,minimum width=0.75cm,minimum height=0.3cm]
+
+
+\begin{scope}[xshift=7cm]
+\node (M) [minimum width=2cm, minimum height=2.5cm] {$m$};
+
+\node (ground) [ground,anchor=north,yshift=-0.25cm,xshift=-3cm,minimum width=.3cm] at (M.south) {};
+\node (ground2) [ground,anchor=north,yshift=-0.25cm,xshift=0.05cm,minimum width=5.8cm] at (M.south) {};
+\draw (ground2.north east) -- (ground2.north west);
+
+\node (wall) [ground, rotate=-90, minimum width=3cm,yshift=-3cm] {};
+\draw (wall.north east) -- (wall.north west);
+
+\draw [damper] (wall.170) -- ($(M.north west)!(wall.170)!(M.south west)$) node[pos=0.3,above=1mm,draw=none] {$d$};
+\draw [spring] (wall.90) -- ($(M.north west)!(wall.90)!(M.south west)$) node[pos=0.3,above=1mm,draw=none] {$c$};
+\draw [nonlinear spring] (wall.10) -- ($(M.north west)!(wall.10)!(M.south west)$)node[pos=0.3,above=1mm,draw=none] {$\alpha$};
+
+\draw [-latex,ultra thick, CPSred] (M.east) ++ (0.2cm,0) -- +(1.5cm,0) node[pos=0.5,above=2mm,draw=none] {$F_0\sin(\Omega t)$};
+\end{scope}
+\end{tikzpicture}
+
+
+\end{document}
