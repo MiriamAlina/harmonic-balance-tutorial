@@ -1,0 +1,52 @@
+# -------------------------
+# Jupyter Notebook
+# -------------------------
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Optional: große automatisch erzeugte Outputs (falls du sie nicht versionieren willst)
+# *.png
+# *.pdf
+
+# -------------------------
+# Python / Virtual Environments
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+.env/
+.venv/
+venv/
+
+# -------------------------
+# LaTeX
+# -------------------------
+*.aux
+*.log
+*.toc
+*.synctex.gz
+*.out
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.brf
+*.lof
+*.lot
+*.nav
+*.snm
+*.xdv
+
+# TikZ externalization (falls du das nutzt)
+*.tikz.tmp
+*.tikz.dictionary
+
+# -------------------------
+# OS-specific
+# -------------------------
+.DS_Store
+Thumbs.db
