@@ -1,7 +1,7 @@
 # Harmonic Balance Tutorial
 
 This repository provides educational material on the Harmonic Balance Method.
-It contains a Jupyter notebook and several TikZ diagrams for visualization.
+It contains a Jupyter notebook and TikZ diagrams for visualization.
 
 ## Requirements
 
